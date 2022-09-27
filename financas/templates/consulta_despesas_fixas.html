@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <b>Valor total de despesas </b>{{ valor_total }}
+  <br><br>
+  <table>
+      <tr>
+          <th>Descrição</th>
+          <th>Data início</th>
+          <th>Data fim</th>
+          <th>Valor</th>
+      </tr>
+      {% for d in despesasfixas %}
+      <tr>
+          <td>{{ d.descricao }} </td>
+          <td>{{ d.data_inicio }}</td>
+          <td>{{ d.data_fim }}</td>
+          <td>{{ d.valor }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+</body>
+</html>

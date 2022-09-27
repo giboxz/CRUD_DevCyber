@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Despesas Fixas</h1>
+    
+    <ul>
+        {% for despesas in despesasfixas %}
+            <li> {{ despesas.id }} - {{ despesas.valor }} - {{ despesas.descricao }} 
+            <a href="{% url 'editar' despesas.id %}">Editar</a>
+            <a href="{% url 'delete' despesas.id %}">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'cadastro_despesa_fixa' %}" method="POST">
+        {% csrf_token %}
+        <button type='submit'>Cadastrar despesa fixa</button>
+    </form>
+    <form action="{% url 'consulta_despesas_fixas' %}" method="POST">
+        {% csrf_token %}
+        <button type='submit'>Consultar despesa fixa</button>
+    </form>
+    
+</html>
