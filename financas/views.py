@@ -2,16 +2,13 @@ from django.shortcuts import render, redirect
 from . models import DespesasFixas
 
 def home(request):
-    despesasfixas = DespesasFixas.objects.all()
-    return render(request, "index.html", {"despesasfixas": despesasfixas})
+    despesas_fixas = DespesasFixas.objects.all()
+    return render(request, "index.html", {"despesasfixas": despesas_fixas})
 
 def salvar(request):
     descricao = request.POST.get('descricao')
-    data_inicio = request.POST.get('data_inicio')
-    data_fim = request.POST.get('data_fim')
     valor = request.POST.get('valor')
-    DespesasFixas(descricao=descricao, data_inicio=data_inicio,
-    data_fim=data_fim, valor=valor).save()
+    DespesasFixas(descricao=descricao, valor=valor).save()
     despesasfixas = DespesasFixas.objects.all()
     return render(request, "index.html", {"despesasfixas": despesasfixas})
 
@@ -21,28 +18,24 @@ def editar(request, id):
 
 def update(request, id):
     descricao = request.POST.get('descricao')
-    data_inicio = request.POST.get('data_inicio')
-    data_fim = request.POST.get('data_fim')
     valor = request.POST.get('valor')
-    despesasfixas = DespesasFixas.objects.get(id=id)
-    despesasfixas.descricao = descricao
-    despesasfixas.data_inicio = data_inicio
-    despesasfixas.data_fim = data_fim
-    despesasfixas.valor = valor
-    despesasfixas.save()
+    despesas_fixas = DespesasFixas.objects.get(id=id)
+    despesas_fixas.descricao = descricao
+    despesas_fixas.valor = valor
+    despesas_fixas.save()
     return redirect(home)
 
 def delete(request, id):
-    despesasfixas = DespesasFixas.objects.get(id=id)
-    despesasfixas.delete()
+    despesas_fixas = DespesasFixas.objects.get(id=id)
+    despesas_fixas.delete()
     return redirect(home)
 
 def consulta_despesas_fixas(request):
-    despesasfixas = DespesasFixas.objects.all()
+    despesas_fixas = DespesasFixas.objects.all()
     valor_total = 0
-    for d in despesasfixas:
+    for d in despesas_fixas:
         valor_total = float(d.valor) + valor_total
-    return render(request, 'consulta_despesas_fixas.html', {'despesasfixas': despesasfixas, 'valor_total': valor_total})
+    return render(request, 'consulta_despesas_fixas.html', {'despesasfixas': despesas_fixas, 'valor_total': valor_total})
 
 def cadastro_despesa_fixa(request):
     return render(request, 'cadastro_despesa_fixa.html')

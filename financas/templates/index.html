@@ -11,7 +11,7 @@
     <h1>Despesas Fixas</h1>
     
     <ul>
-        {% for despesas in despesasfixas %}
+        {% for despesas in despesas_fixas %}
             <li> {{ despesas.id }} - {{ despesas.valor }} - {{ despesas.descricao }} 
             <a href="{% url 'editar' despesas.id %}">Editar</a>
             <a href="{% url 'delete' despesas.id %}">Deletar</a>
