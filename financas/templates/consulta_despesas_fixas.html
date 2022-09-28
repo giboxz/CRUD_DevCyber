@@ -13,15 +13,11 @@
   <table>
       <tr>
           <th>Descrição</th>
-          <th>Data início</th>
-          <th>Data fim</th>
           <th>Valor</th>
       </tr>
       {% for d in despesasfixas %}
       <tr>
           <td>{{ d.descricao }} </td>
-          <td>{{ d.data_inicio }}</td>
-          <td>{{ d.data_fim }}</td>
           <td>{{ d.valor }}</td>
       </tr>
       {% endfor %}

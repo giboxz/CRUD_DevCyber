@@ -9,15 +9,13 @@
 </head>
 <body>
 
-  <h3>{{ despesasfixas.id }} - {{ despesasfixas.valor }} - {{ despesasfixas.descricao }}</h3>
+  <h3>{{ despesas_fixas.id }} - {{ despesas_fixas.valor }} - {{ despesas_fixas.descricao }}</h3>
 
-  <form action="{% url 'editar' despesasfixas.id %}" method="POST">
+  <form action="{% url 'editar' despesas_fixas.id %}" method="POST">
     {% csrf_token %}
     <h1>Atualizar cadastro de despesas fixas</h1>
     <br>
     <input type="text" placeholder="Descrição" name="descricao" value={{despesasfixas.descricao}}><br><br>
-    <input type="date" name="data_inicio" value={{despesasfixas.data_inicio}><br><br>
-    <input type="date" name="data_fim" value={{despesasfixas.data_fim}}><br><br>
     <input type="decimal" placeholder="Valor" name="valor" value={{despesasfixas.valor}}><br><br>
     <button type="submit">Update</button> <br>
   </form>
